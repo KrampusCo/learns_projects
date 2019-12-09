@@ -1,11 +1,18 @@
 <template>
-	<div>
-		<h1> Chat use VueJS</h1>
-		<button v-if='!auth' @click='goLogin'>Вход</button>
-		<button v-else  @click='logout'>Выход</button>
-		<Room v-if="auth" @openDialog="openDialog"></Room>
-		<Dialog v-if='dialog.show' :id="dialog.id"></Dialog>
-	</div>
+	<mu-container>
+		<mu-appbar style="width: 100%;" color="primary" xl='10'>
+  			Chat use VueJS
+  			<mu-button v-if='!auth' @click='goLogin'flat slot="right">LOGIN</mu-button>
+  			<mu-button v-else  @click='logout' flat slot="right">OUTLOG</mu-button>
+		</mu-appbar>
+		<mu-row>
+			
+		</mu-row>
+		<mu-row>
+			<Room v-if="auth" @openDialog="openDialog"></Room>
+			<Dialog v-if='dialog.show' :id="dialog.id"></Dialog>
+		</mu-row>
+	</mu-container>
 </template>
 
 <script>
@@ -41,7 +48,7 @@
 				window.location='/'
 			},
 			openDialog(id){
-				this.dialog.id=id+1
+				this.dialog.id=id
 				this.dialog.show=true
 			}
 		}
